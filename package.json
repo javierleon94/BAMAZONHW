@@ -1,0 +1,28 @@
+{
+  "name": "bamazonhw",
+  "version": "1.0.0",
+  "description": "bamazon hw",
+  "main": "index.js",
+  "dependencies": {
+    "mysql": "^2.11.1",
+    "inquirer": "^1.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javierleon94/BAMAZONHW.git"
+  },
+  "keywords": [
+    "node",
+    "mysql"
+  ],
+  "author": "javier leon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/javierleon94/BAMAZONHW/issues"
+  },
+  "homepage": "https://github.com/javierleon94/BAMAZONHW#readme"
+}
