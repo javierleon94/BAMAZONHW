@@ -25,4 +25,6 @@ VALUES ('Medicinal Flowers', 'Medicine', '30', '5');
 INSERT INTO products (productName, departmentName, price, stockQuantity)
 VALUES ('iphone', 'Devices', '800', '10')
 
+INSERT INTO products (productName, departmentName, price, stockQuantity)
+VALUES ('Gucci Scarf', 'Devices', '800', '10')
 
