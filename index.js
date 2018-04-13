@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 	database: "bamazon"
 })
 
-console.log("Welcome to B-Amazon!");
+console.log("Greetings from B-Amazon!");
 //connect to sql and start the products
 connection.connect(function(err){
 	if (err) throw err;
@@ -25,7 +25,7 @@ var start = function (){
 	{
 		name: "welcome",
 		type: "list",
-		message: "Welcome, would you like to shop our products?",
+		message: "Welcome, would you like to shop for the best products?",
 		choices: ["YES", "NO"]
 	}).then(function(answer) {
 		if (answer.welcome.toUpperCase() == "YES"){
@@ -42,16 +42,16 @@ var start = function (){
 var ourProducts = function (){
 connection.query('SELECT * FROM products', function(err, res) {
     for (var i = 0; i < res.length; i++) {
-    	//diplay products offered
+    	//showing inventory
         console.log(res[i].itemID + " | " + res[i].productName + " | " + res[i].departmentName + " | " + "$" + res[i].price);
     }
     console.log("-----------------------------------");
-    // asks the next question ater 3 seconds
-    setTimeout(function() {nextAsk();}, 3000);
+    // asks the next question ater 2 seconds
+    setTimeout(function() {nextAsk();}, 2000);
 })
 };
  
-// prompt next questions to find out what customer wants
+// asks next to the customer wants
 var nextAsk = function (){
 	inquirer.prompt([
 	{
@@ -72,20 +72,20 @@ var nextAsk = function (){
             }
         }
 	}]).then(function(answer) {
-		console.log("-----------CHECK OUT------------------------");
+		console.log("NEXT IS CHECKOUT");
 			checkQuantity(answer);
 	})
 };
 
 // compare product units wanted vs available products
 var checkQuantity = function(answer) {
-	console.log("Checking my stock");
+	console.log("Looking For Items");
 	var query = 'SELECT stockQuantity, price FROM products WHERE itemID =?';
 	var params = answer.productid;
 
 		connection.query(query, params, function(err, res) {
 			if ( res[0].stockQuantity < answer.productunits) {
-				console.log("Insufficient quantity");
+				console.log("Out of Stock");
 				nextAsk(1);
 			}
 			else {
@@ -97,7 +97,7 @@ var checkQuantity = function(answer) {
 
 				connection.query("UPDATE `products` SET stockQuantity = (stockQuantity - ?) WHERE id = ?;", [answer.productunits, answer.productid], function(err, res){
 					
-						console.log("Your order had been processed at $" + total);
+						console.log("Your purchase is complete. $" + total);
 					});
 				
 				}
@@ -105,7 +105,7 @@ var checkQuantity = function(answer) {
 
 	
 			setTimeout(function(){
-				console.log("Thanks for shopping with us!");
+				console.log("Thanks for your money!!");
 			},3000);
 	
 	
